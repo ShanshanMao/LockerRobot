@@ -2,6 +2,7 @@ package com.tw.tdd.lockerRobot.Locker;
 
 import com.tw.tdd.lockerRobot.Bag.Bag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
+import com.tw.tdd.lockerRobot.Exception.NoRoomException;
 import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
 
 public class sSizeLocker extends Locker{
@@ -9,6 +10,9 @@ public class sSizeLocker extends Locker{
         super(capacity);
     }
     public sSizeTicket store(Bag bag) {
+        if (lockerMap.size()>=capacity){
+            throw new NoRoomException();
+        }
         if (bag instanceof sSizeBag){
             sSizeTicket ticket = new sSizeTicket();
             lockerMap.put(ticket,bag);
