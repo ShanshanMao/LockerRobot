@@ -1,6 +1,7 @@
 package com.tw.tdd.lockerRobot;
 
 import com.tw.tdd.lockerRobot.Bag.Bag;
+import com.tw.tdd.lockerRobot.Bag.mSizeBag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
 import com.tw.tdd.lockerRobot.Exception.NoRoomException;
 import com.tw.tdd.lockerRobot.Locker.lSizeLocker;
@@ -104,4 +105,14 @@ public class LockerRobotTest {
         assertEquals(bag, returnBag);
     }
 
+    @Test
+    void should_store_ordinary_user_mSizeBag_in_mSizeLocker_and_return_mSizeTicket_when_xiaoying_store_bag_given_PrimaryLockerRobot_manage_mSizeLocker_have_capacity() {
+        mSizeLocker primarySizeLocker = new mSizeLocker(1);
+        PrimaryLockerRobot xiaoying = new PrimaryLockerRobot(singletonList(primarySizeLocker));
+
+        Bag bag = new mSizeBag();
+        mSizeTicket mSizeticket = (mSizeTicket) xiaoying.store(bag);
+
+        Assertions.assertNotNull(mSizeticket);
+    }
 }
