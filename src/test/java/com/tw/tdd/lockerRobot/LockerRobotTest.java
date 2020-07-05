@@ -1,6 +1,7 @@
 package com.tw.tdd.lockerRobot;
 
 import com.tw.tdd.lockerRobot.Bag.Bag;
+import com.tw.tdd.lockerRobot.Bag.lSizeBag;
 import com.tw.tdd.lockerRobot.Bag.mSizeBag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
 import com.tw.tdd.lockerRobot.Exception.InvalidTicketException;
@@ -11,6 +12,7 @@ import com.tw.tdd.lockerRobot.Locker.sSizeLocker;
 import com.tw.tdd.lockerRobot.Robot.LockerRobotManager;
 import com.tw.tdd.lockerRobot.Robot.PrimaryLockerRobot;
 import com.tw.tdd.lockerRobot.Robot.SuperLockerRobot;
+import com.tw.tdd.lockerRobot.Ticket.lSizeTicket;
 import com.tw.tdd.lockerRobot.Ticket.mSizeTicket;
 import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
 
@@ -195,5 +197,16 @@ public class LockerRobotTest {
 
         assertEquals(bag, returnBag);
     }
+    @Test
+    void should_store_ordinary_user_lSizeBag_in_lSizeLocker_and_return_lSizeTicket_when_xiaoying_store_bag_given_SuperLockerRobot_manage_lSizeLocker_have_capacity() {
+        lSizeLocker superSizeLocker = new lSizeLocker(1);
+        SuperLockerRobot xiaoying = new SuperLockerRobot(singletonList(superSizeLocker));
+
+        Bag bag = new lSizeBag();
+        lSizeTicket lSizeticket = (lSizeTicket) xiaoying.store(bag);
+
+        Assertions.assertNotNull(lSizeticket);
+    }
+
 
 }
