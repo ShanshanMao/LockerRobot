@@ -259,5 +259,20 @@ public class LockerRobotTest {
         Assertions.assertNotNull(ticket);
     }
 
+    @Test
+    void should_store_VIP_user_lSizeBag_in_lSizeLocker_fail_when_LockerRobotManager_store_bag_given_lSizeLocker_is_full() {
+        sSizeLocker sSizelocker = new sSizeLocker(1);
+        mSizeLocker primarySizeLocker = new mSizeLocker(1);
+        lSizeLocker superSizeLocker = new lSizeLocker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(singletonList(primarySizeLocker));
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(singletonList(superSizeLocker));
+        LockerRobotManager manager = new LockerRobotManager(singletonList(sSizelocker), singletonList(primaryLockerRobot), singletonList(superLockerRobot));
+
+        Bag bag = new lSizeBag();
+        manager.store(bag);
+
+        assertThrows(NoRoomException.class, () -> manager.store(new Bag()));
+    }
+
 
 }
