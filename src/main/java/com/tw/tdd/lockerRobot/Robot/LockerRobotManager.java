@@ -5,6 +5,7 @@ import com.tw.tdd.lockerRobot.Bag.sSizeBag;
 import com.tw.tdd.lockerRobot.Exception.NoRoomException;
 import com.tw.tdd.lockerRobot.Locker.sSizeLocker;
 import com.tw.tdd.lockerRobot.Ticket.Ticket;
+import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
 
 import java.util.List;
 
@@ -29,4 +30,15 @@ public class LockerRobotManager {
         }
         throw new NoRoomException();
     }
+
+    public Bag pickUp(Ticket ticket) {
+        if (ticket instanceof sSizeTicket) {
+            for (sSizeLocker locker : sSizeLockers) {
+                return locker.pickUp(ticket);
+            }
+        }
+        return null;
+    }
+
+
 }
