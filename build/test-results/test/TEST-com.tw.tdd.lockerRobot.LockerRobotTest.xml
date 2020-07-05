@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tw.tdd.lockerRobot.LockerRobotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-05T13:47:06" hostname="CNShanshanMao" time="0.008">
+<testsuite name="com.tw.tdd.lockerRobot.LockerRobotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-05T13:58:14" hostname="CNShanshanMao" time="0.009">
   <properties/>
-  <testcase name="should_pick_up_ordinary_user_mSizeBag_in_mSizeLocker_fail_when_xiaoying_pick_up_bag_given_valid_sSizeTicket()" classname="com.tw.tdd.lockerRobot.LockerRobotTest" time="0.008"/>
+  <testcase name="should_store_VIP_user_mSizeBag_in_mSizeLocker_and_return_mSizeTicket_when_LockerRobotManager_store_bag_given_mSizeLocker_have_capacity()" classname="com.tw.tdd.lockerRobot.LockerRobotTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

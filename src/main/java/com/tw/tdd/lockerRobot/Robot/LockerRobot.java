@@ -31,4 +31,6 @@ public abstract class LockerRobot {
         }
 
 
+    public int getValidCapacity(){
+        return lockers.stream().mapToInt(Locker::getValidCapacity).sum();}
 }

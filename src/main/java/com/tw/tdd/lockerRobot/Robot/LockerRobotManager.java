@@ -1,8 +1,10 @@
 package com.tw.tdd.lockerRobot.Robot;
 
 import com.tw.tdd.lockerRobot.Bag.Bag;
+import com.tw.tdd.lockerRobot.Bag.mSizeBag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
 import com.tw.tdd.lockerRobot.Exception.NoRoomException;
+import com.tw.tdd.lockerRobot.Locker.mSizeLocker;
 import com.tw.tdd.lockerRobot.Locker.sSizeLocker;
 import com.tw.tdd.lockerRobot.Ticket.Ticket;
 import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
@@ -20,11 +22,20 @@ public class LockerRobotManager {
         this.superLockerRobot = superLockerRobot;
     }
 
+
     public Ticket store(Bag bag) {
         if (bag instanceof sSizeBag) {
             for (sSizeLocker sSizelocker : sSizeLockers) {
                 if (sSizelocker.getValidCapacity() > 0) {
                     return sSizelocker.store(bag);
+                }
+            }
+        }
+
+        if (bag instanceof mSizeBag) {
+            for ( PrimaryLockerRobot primaryLockerRobot : primaryLockerRobot) {
+                if (primaryLockerRobot.getValidCapacity() > 0) {
+                    return primaryLockerRobot.store(bag);
                 }
             }
         }
