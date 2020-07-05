@@ -2,6 +2,7 @@ package com.tw.tdd.lockerRobot.Robot;
 
 import com.tw.tdd.lockerRobot.Bag.Bag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
+import com.tw.tdd.lockerRobot.Exception.NoRoomException;
 import com.tw.tdd.lockerRobot.Locker.sSizeLocker;
 import com.tw.tdd.lockerRobot.Ticket.Ticket;
 
@@ -26,6 +27,6 @@ public class LockerRobotManager {
                 }
             }
         }
-        return null;
+        throw new NoRoomException();
     }
 }

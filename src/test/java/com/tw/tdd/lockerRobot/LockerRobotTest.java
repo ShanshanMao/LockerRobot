@@ -15,6 +15,8 @@ import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
@@ -74,4 +76,20 @@ public class LockerRobotTest {
 
         Assertions.assertNotNull(ticket);
     }
-}
+
+    @Test
+    void should_store_VIP_user_sSizeBag_in_sSizeLocker_fail_when_LockerRobotManager_store_bag_given_sSizeLocker_is_full() {
+        sSizeLocker sSizelocker = new sSizeLocker(1);
+        mSizeLocker primarySizeLocker = new mSizeLocker(1);
+        lSizeLocker superSizeLocker = new lSizeLocker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(singletonList(primarySizeLocker));
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(singletonList(superSizeLocker));
+        LockerRobotManager manager = new LockerRobotManager(singletonList(sSizelocker), singletonList(primaryLockerRobot), singletonList(superLockerRobot));
+
+        Bag bag = new sSizeBag();
+        manager.store(bag);
+
+        assertThrows(NoRoomException.class, () -> manager.store(new Bag()));
+    }
+
+    }
