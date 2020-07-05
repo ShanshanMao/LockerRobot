@@ -232,5 +232,17 @@ public class LockerRobotTest {
         assertEquals(bag, returnBag);
     }
 
+    @Test
+    void should_pick_up_ordinary_user_lSizeBag_in_lSizeLocker_fail_when_xiaoying_pick_up_bag_given_valid_sSizeTicket() {
+        lSizeLocker superSizelocker = new lSizeLocker(1);
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(singletonList(superSizelocker));
+
+        Bag bag = new sSizeBag();
+        sSizeLocker xiaoying = new sSizeLocker(1);
+        sSizeTicket ticket = (sSizeTicket) xiaoying.store(bag);
+
+        assertThrows(InvalidTicketException.class, () -> superLockerRobot.pickUp(ticket));
+    }
+
 
 }
