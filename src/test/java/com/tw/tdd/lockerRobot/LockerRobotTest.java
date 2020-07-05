@@ -3,12 +3,16 @@ package com.tw.tdd.lockerRobot;
 import com.tw.tdd.lockerRobot.Bag.Bag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
 import com.tw.tdd.lockerRobot.Exception.NoRoomException;
+import com.tw.tdd.lockerRobot.Locker.lSizeLocker;
 import com.tw.tdd.lockerRobot.Locker.mSizeLocker;
 import com.tw.tdd.lockerRobot.Locker.sSizeLocker;
+import com.tw.tdd.lockerRobot.Robot.LockerRobotManager;
 import com.tw.tdd.lockerRobot.Robot.PrimaryLockerRobot;
+import com.tw.tdd.lockerRobot.Robot.SuperLockerRobot;
 import com.tw.tdd.lockerRobot.Ticket.mSizeTicket;
 import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static java.util.Collections.singletonList;
@@ -54,5 +58,20 @@ public class LockerRobotTest {
 
         Bag returnBag = primaryLockerRobot.pickUp(ticket);
         assertEquals(bag, returnBag);
+    }
+
+    @Test
+    void should_store_VIP_user_sSizeBag_in_sSizeLocker_and_return_sSizeTicket_when_LockerRobotManager_store_bag_given_sSizeLocker_have_capacity() {
+        sSizeLocker sSizelocker = new sSizeLocker(1);
+        mSizeLocker primarySizeLocker = new mSizeLocker(1);
+        lSizeLocker superSizeLocker = new lSizeLocker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(singletonList(primarySizeLocker));
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(singletonList(superSizeLocker));
+        LockerRobotManager manager = new LockerRobotManager(singletonList(sSizelocker), singletonList(primaryLockerRobot), singletonList(superLockerRobot));
+
+        Bag bag = new sSizeBag();
+        sSizeTicket ticket = (sSizeTicket) manager.store(bag);
+
+        Assertions.assertNotNull(ticket);
     }
 }

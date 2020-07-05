@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tw.tdd.lockerRobot.LockerRobotTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-07-05T12:31:38" hostname="CNShanshanMao" time="0.015">
+<testsuite name="com.tw.tdd.lockerRobot.LockerRobotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-05T13:00:07" hostname="CNShanshanMao" time="0.006">
   <properties/>
-  <testcase name="should_store_ordinary_user_sSizeBag_in_sSizeLocker_fail_when_xiaoying_store_bag_given_sSizeLocker_is_full()" classname="com.tw.tdd.lockerRobot.LockerRobotTest" time="0.008"/>
-  <testcase name="should_pick_up_ordinary_user_sSizeBag_in_sSizeLocker_fail_when_xiaoying_pick_up_bag_given_PrimaryLockerRobot_manage_mSizeLocker_get_valid_mSizeTicket()" classname="com.tw.tdd.lockerRobot.LockerRobotTest" time="0.002"/>
-  <testcase name="should_store_ordinary_user_sSizeBag_in_sSizeLocker_and_return_sSizeTicket_when_xiaoying_store_bag_given_sSizeLocker_have_capacity()" classname="com.tw.tdd.lockerRobot.LockerRobotTest" time="0.002"/>
-  <testcase name="should_pick_up_ordinary_user_sSizeBag_in_sSizeLocker_success_when_xiaoying_pick_up_bag_given_valid_sSizeTicket()" classname="com.tw.tdd.lockerRobot.LockerRobotTest" time="0.0"/>
+  <testcase name="should_store_VIP_user_sSizeBag_in_sSizeLocker_and_return_sSizeTicket_when_LockerRobotManager_store_bag_given_sSizeLocker_have_capacity()" classname="com.tw.tdd.lockerRobot.LockerRobotTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

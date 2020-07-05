@@ -3,6 +3,7 @@ package com.tw.tdd.lockerRobot.Locker;
 import com.tw.tdd.lockerRobot.Bag.Bag;
 import com.tw.tdd.lockerRobot.Exception.InvalidTicketException;
 import com.tw.tdd.lockerRobot.Ticket.Ticket;
+import com.tw.tdd.lockerRobot.Ticket.lSizeTicket;
 
 import java.util.HashMap;
 import java.util.Map;
