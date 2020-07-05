@@ -244,5 +244,20 @@ public class LockerRobotTest {
         assertThrows(InvalidTicketException.class, () -> superLockerRobot.pickUp(ticket));
     }
 
+    @Test
+    void should_store_VIP_user_lSizeBag_in_lSizeLocker_and_return_lSizeTicket_when_LockerRobotManager_store_bag_given_lSizeLocker_have_capacity() {
+        sSizeLocker sSizelocker = new sSizeLocker(1);
+        mSizeLocker primarySizeLocker = new mSizeLocker(1);
+        lSizeLocker superSizeLocker = new lSizeLocker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(singletonList(primarySizeLocker));
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(singletonList(superSizeLocker));
+        LockerRobotManager manager = new LockerRobotManager(singletonList(sSizelocker),singletonList(primaryLockerRobot), singletonList(superLockerRobot));
+
+        Bag bag = new lSizeBag();
+        lSizeTicket ticket = (lSizeTicket) manager.store(bag);
+
+        Assertions.assertNotNull(ticket);
+    }
+
 
 }

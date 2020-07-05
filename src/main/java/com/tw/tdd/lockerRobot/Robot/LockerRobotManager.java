@@ -1,6 +1,7 @@
 package com.tw.tdd.lockerRobot.Robot;
 
 import com.tw.tdd.lockerRobot.Bag.Bag;
+import com.tw.tdd.lockerRobot.Bag.lSizeBag;
 import com.tw.tdd.lockerRobot.Bag.mSizeBag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
 import com.tw.tdd.lockerRobot.Exception.NoRoomException;
@@ -40,6 +41,14 @@ public class LockerRobotManager {
                 }
             }
         }
+
+        if (bag instanceof lSizeBag) {
+            for (SuperLockerRobot superLockerRobot : superLockerRobot) {
+                if(superLockerRobot.getValidCapacity() > 0 )
+                    return superLockerRobot.store(bag);
+            }
+        }
+
         throw new NoRoomException();
     }
 
