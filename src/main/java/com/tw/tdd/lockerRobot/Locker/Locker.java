@@ -13,4 +13,14 @@ public class Locker {
     public Locker(int capacity) {
         this.capacity = capacity;
     }
+
+    public Bag pickUp(sSizeTicket ticket) {
+        if (isValidTicket(ticket))
+            return lockerMap.get(ticket);
+        return null;
+    }
+
+    private boolean isValidTicket(sSizeTicket ticket) {
+        return lockerMap.get(ticket) != null;
+    }
 }
