@@ -1,0 +1,89 @@
+TDD结营考试 开发一个新的Locker Robot存取包系统，其中Locker/Robot/Manager可以帮助顾客存取包
+小樱是前台服务员，负责所有的存取包服务。
+
+Tasking
+
+Given 普通顾客需要存S型号的包（sSizeBag），小樱有1个S型号的Locker未满(sSizeLocker)
+When 小樱存包(store)
+Then 存入sSizeLocker成功，返回S类型的票据（sSizeTicket）
+
+Given 普通顾客需要存S型号的包（sSizeBag），小樱有1个S型号的Locker已满(sSizeLocker)
+When 小樱存包(store)
+Then 存入sSizeLocker失败，提示：没有可用容量
+
+Given  普通顾客拿一张sSizeTicket有效票在sSizeLocker取包
+When  小樱取包（pickUp）
+Then  取包成功
+
+Given  普通顾客拿一张mSizeTicket有效票在sSizeLocker取包
+When  小樱取包（pickUp）
+Then  取包失败，提示：票据无效
+
+Given VIP顾客需要存S型号的包（sSizeBag），LockerRobotManager有1个S型号的Locker未满(sSizeLocker)
+When  LockerRobotManager存包(store)
+Then  存入sSizeLocker成功，返回S类型的票据（sSizeTicket）
+
+Given VIP顾客需要存S型号的包（sSizeBag），LockerRobotManager有1个S型号的Locker已满(sSizeLocker)
+When  LockerRobotManager存包(store)
+Then  LockerRobotManager存入sSizeLocker失败，提示：没有可用容量
+
+Given  VIP顾客拿一张sSizeTicket有效票在sSizeLocker取包
+When   LockerRobotManager取包（pickUp）
+Then   取包成功
+
+Given 普通顾客需要存M型号的包（mSizeBag），有1个PrimaryLockerRobot管理1个M型号的Locker未满（mSizeLocker）
+When  小樱存包(store)
+Then  小樱通过PrimaryLockerRobot存包成功，返回M类型的票据（mSizeTicket）
+
+Given 普通顾客需要存M型号的包（mSizeBag），有1个PrimaryLockerRobot管理1个M型号的Locker已满（mSizeLocker）
+When  小樱存包(store)
+Then  小樱通过PrimaryLockerRobot存包失败，提示：没有可用容量
+
+Given  普通顾客拿一张mSizeTicket有效票在PrimaryLockerRobot管理的mSizeLocker取包
+When  小樱取包（pickUp）
+Then  取包成功，PrimaryLockerRobot返回一个包
+
+Given  普通顾客拿一张sSizeTicket有效票在PrimaryLockerRobot管理的mSizeLocker取包
+When  小樱取包（pickUp）
+Then  取包失败，提示：票据无效
+
+Given VIP顾客需要存M型号的包（mSizeBag），PrimaryLockerRobot有1个M型号的Locker未满(mSizeLocker)
+When  LockerRobotManager存包(store)
+Then  存入mSizeLocker成功，返回M类型的票据（mSizeTicket）
+
+Given VIP顾客需要存M型号的包（mSizeBag），PrimaryLockerRobot有1个M型号的Locker已满(mSizeLocker)
+When  LockerRobotManager存包(store)
+Then  存入mSizeLocker失败，提示：没有可用容量
+
+Given  VIP顾客拿一张mSizeTicket有效票在PrimaryLockerRobot取包
+When   LockerRobotManager取包（pickUp）
+Then   取包成功, PrimaryLockerRobot返回一个包
+
+Given 普通顾客需要存L型号的包（lSizeBag），有1个SuperLockerRobot管理1个L型号的Locker未满（lSizeLocker）
+When  小樱存包(store)
+Then  小樱通过SuperLockerRobot存包成功，返回L类型的票据（lSizeTicket）
+
+Given 普通顾客需要存L型号的包（lSizeBag），有1个SuperLockerRobot管理1个L型号的Locker已满（lSizeLocker）
+When  小樱存包(store)
+Then  小樱通过SuperLockerRobot存包失败，提示：没有可用容量
+
+Given  普通顾客拿一张lSizeTicket有效票在SuperLockerRobot管理的lSizeLocker取包
+When  小樱取包（pickUp）
+Then  取包成功，SuperLockerRobot返回一个包
+
+Given  普通顾客拿一张sSizeTicket有效票在SuperLockerRobot管理的lSizeLocker取包
+When  小樱取包（pickUp）
+Then  取包失败，提示：票据无效
+
+Given VIP顾客需要存L型号的包（lSizeBag），SuperLockerRobot有1个L型号的Locker未满(lSizeLocker)
+When  LockerRobotManager存包(store)
+Then  存入lSizeLocker成功，返回L类型的票据（lSizeTicket）
+
+Given VIP顾客需要存L型号的包（lSizeBag），SuperLockerRobot有1个L型号的Locker已满(lSizeLocker)
+When  LockerRobotManager存包(store)
+Then  存入lSizeLocker失败，提示：没有可用容量
+
+Given  VIP顾客拿一张lSizeTicket有效票在SuperLockerRobot取包
+When   LockerRobotManager取包（pickUp）
+Then   取包成功, SuperLockerRobot返回一个包
+
