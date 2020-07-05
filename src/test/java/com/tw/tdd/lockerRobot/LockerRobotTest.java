@@ -183,4 +183,17 @@ public class LockerRobotTest {
         assertThrows(NoRoomException.class, () -> manager.store(new Bag()));
     }
 
+    @Test
+    void should_pick_up_VIP_user_mSizeBag_in_mSizeLocker_success_when_LockerRobotManager_pick_up_bag_given_valid_mSizeTicket() {
+        Bag bag = new mSizeBag();
+        mSizeLocker primarySizeLocker = new mSizeLocker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(singletonList(primarySizeLocker));
+        LockerRobotManager manager = new LockerRobotManager(null, singletonList(primaryLockerRobot), null);
+        mSizeTicket ticket = (mSizeTicket) manager.store(bag);
+
+        Bag returnBag = manager.pickUp(ticket);
+
+        assertEquals(bag, returnBag);
+    }
+
 }

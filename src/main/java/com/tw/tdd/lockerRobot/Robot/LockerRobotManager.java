@@ -7,6 +7,7 @@ import com.tw.tdd.lockerRobot.Exception.NoRoomException;
 import com.tw.tdd.lockerRobot.Locker.mSizeLocker;
 import com.tw.tdd.lockerRobot.Locker.sSizeLocker;
 import com.tw.tdd.lockerRobot.Ticket.Ticket;
+import com.tw.tdd.lockerRobot.Ticket.mSizeTicket;
 import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
 
 import java.util.List;
@@ -46,6 +47,14 @@ public class LockerRobotManager {
         if (ticket instanceof sSizeTicket) {
             for (sSizeLocker locker : sSizeLockers) {
                 return locker.pickUp(ticket);
+            }
+        }
+
+        if (ticket instanceof mSizeTicket) {
+            for (LockerRobot primaryLockerRobot : primaryLockerRobot) {
+                if (primaryLockerRobot.isValidTicket(ticket)) {
+                    return primaryLockerRobot.pickUp(ticket);
+                }
             }
         }
         return null;
