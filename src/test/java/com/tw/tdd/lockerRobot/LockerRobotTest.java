@@ -3,6 +3,7 @@ package com.tw.tdd.lockerRobot;
 import com.tw.tdd.lockerRobot.Bag.Bag;
 import com.tw.tdd.lockerRobot.Bag.mSizeBag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
+import com.tw.tdd.lockerRobot.Exception.InvalidTicketException;
 import com.tw.tdd.lockerRobot.Exception.NoRoomException;
 import com.tw.tdd.lockerRobot.Locker.lSizeLocker;
 import com.tw.tdd.lockerRobot.Locker.mSizeLocker;
@@ -138,5 +139,17 @@ public class LockerRobotTest {
         Bag returnBag = primaryLocker.pickUp(ticket);
 
         assertEquals(bag, returnBag);
+    }
+
+    @Test
+    void should_pick_up_ordinary_user_mSizeBag_in_mSizeLocker_fail_when_xiaoying_pick_up_bag_given_valid_sSizeTicket() {
+        mSizeLocker primarySizelocker = new mSizeLocker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(singletonList(primarySizelocker));
+
+        Bag bag = new sSizeBag();
+        sSizeLocker xiaoying = new sSizeLocker(1);
+        sSizeTicket ticket = (sSizeTicket) xiaoying.store(bag);
+
+        assertThrows(InvalidTicketException.class, () -> primaryLockerRobot.pickUp(ticket));
     }
 }
