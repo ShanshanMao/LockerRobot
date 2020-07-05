@@ -208,5 +208,17 @@ public class LockerRobotTest {
         Assertions.assertNotNull(lSizeticket);
     }
 
+    @Test
+    void should_store_ordinary_user_lSizeBag_in_lSizeLocker_fail_when_xiaoying_store_bag_given_SuperLockerRobot_manage_lSizeLocker_is_full() {
+        lSizeLocker superSizeLocker = new lSizeLocker(1);
+        SuperLockerRobot xiaoying = new SuperLockerRobot(singletonList(superSizeLocker));
+
+        Bag bag = new lSizeBag();
+        xiaoying.store(bag);
+        Bag myBag = new lSizeBag();
+
+        assertThrows(NoRoomException.class, () -> xiaoying.store(myBag));
+    }
+
 
 }
