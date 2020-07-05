@@ -1,26 +1,33 @@
 package com.tw.tdd.lockerRobot.Locker;
 
 import com.tw.tdd.lockerRobot.Bag.Bag;
-import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
+import com.tw.tdd.lockerRobot.Exception.InvalidTicketException;
+import com.tw.tdd.lockerRobot.Ticket.Ticket;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Locker {
-    protected int capacity;
-    protected Map<sSizeTicket, Bag> lockerMap = new HashMap<com.tw.tdd.lockerRobot.Ticket.sSizeTicket, Bag>();
+public abstract class Locker {
+    private int capacity;
+    protected Map<Ticket, Bag> lockerMap = new HashMap<>();
 
     public Locker(int capacity) {
         this.capacity = capacity;
     }
 
-    public Bag pickUp(sSizeTicket ticket) {
-        if (isValidTicket(ticket))
+    public Bag pickUp(Ticket ticket) {
+        if (isValidTicket( ticket))
             return lockerMap.get(ticket);
-        return null;
+        throw new InvalidTicketException();
     }
 
-    private boolean isValidTicket(sSizeTicket ticket) {
+    public boolean isValidTicket(Ticket ticket) {
         return lockerMap.get(ticket) != null;
     }
+
+    public  int getValidCapacity() {
+        return capacity - lockerMap.size();
+    }
+
+    public abstract Ticket store(Bag bag);
 }

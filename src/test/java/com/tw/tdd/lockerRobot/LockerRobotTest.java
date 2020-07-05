@@ -3,10 +3,15 @@ package com.tw.tdd.lockerRobot;
 import com.tw.tdd.lockerRobot.Bag.Bag;
 import com.tw.tdd.lockerRobot.Bag.sSizeBag;
 import com.tw.tdd.lockerRobot.Exception.NoRoomException;
+import com.tw.tdd.lockerRobot.Locker.mSizeLocker;
 import com.tw.tdd.lockerRobot.Locker.sSizeLocker;
+import com.tw.tdd.lockerRobot.Robot.PrimaryLockerRobot;
+import com.tw.tdd.lockerRobot.Ticket.mSizeTicket;
 import com.tw.tdd.lockerRobot.Ticket.sSizeTicket;
 
 import org.junit.jupiter.api.Test;
+
+import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,9 +40,19 @@ public class LockerRobotTest {
     void should_pick_up_ordinary_user_sSizeBag_in_sSizeLocker_success_when_xiaoying_pick_up_bag_given_valid_sSizeTicket() {
         Bag bag = new sSizeBag();
         sSizeLocker xiaoying = new sSizeLocker(1);
-        sSizeTicket ticket = xiaoying.store(bag);
+        sSizeTicket ticket = (sSizeTicket) xiaoying.store(bag);
 
         Bag returnBag = xiaoying.pickUp(ticket);
+        assertEquals(bag, returnBag);
+    }
+    @Test
+    void should_pick_up_ordinary_user_sSizeBag_in_sSizeLocker_fail_when_xiaoying_pick_up_bag_given_PrimaryLockerRobot_manage_mSizeLocker_get_valid_mSizeTicket() {
+        Bag bag = new sSizeBag();
+        mSizeLocker primaryLockerRobot = new mSizeLocker(1);
+        PrimaryLockerRobot xiaoying = new PrimaryLockerRobot(singletonList(primaryLockerRobot));
+        mSizeTicket ticket = (mSizeTicket) xiaoying.store(bag);
+
+        Bag returnBag = primaryLockerRobot.pickUp(ticket);
         assertEquals(bag, returnBag);
     }
 }
